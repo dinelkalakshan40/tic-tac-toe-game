@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Game extends Application {
+public class Game{
     private BoardImpl board;
     private AiPlayer aiPlayer;
     private HumanPlayer humanPlayer;
@@ -18,7 +18,7 @@ public class Game extends Application {
     // 3x3 Button array to represent the board
     private Button[][] buttons = new Button[3][3];
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         launch(args);
     }
 
@@ -86,7 +86,7 @@ public class Game extends Application {
         }));
         timeline.setCycleCount(1); // Only run once
         timeline.play(); // Start the delay
-    }
+    }*/
 
     // Handle the player's move
    /* private void handlePlayerMove(int row, int col) {
@@ -118,7 +118,7 @@ public class Game extends Application {
     }*/
 
     // Update the UI to reflect AI's move
-    private void updateBoard(Button[][] buttons) {
+   /* private void updateBoard(Button[][] buttons) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board.getPiece(i, j) == Piece.X) {
@@ -145,6 +145,6 @@ public class Game extends Application {
                 buttons[i][j].setText(""); // Clear button text
             }
         }
-    }
+    }*/
 
 }
