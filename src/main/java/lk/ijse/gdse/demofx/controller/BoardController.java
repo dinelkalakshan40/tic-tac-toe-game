@@ -96,7 +96,7 @@ public class BoardController {
             System.out.println("AI wins!");
             delayResetBoard();
         } else if (board.isFull()) {
-            System.out.println("It's a draw!");
+            System.out.println("Not winner!");
             delayResetBoard();
         }
     }

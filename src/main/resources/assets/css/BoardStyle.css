@@ -1,0 +1,12 @@
+.board-button {
+    -fx-font-size: 40px; /* Increase font size */
+    -fx-font-weight: bold; /* Make font bold */
+    -fx-background-color: white; /* Button background color */
+    -fx-text-fill: #486c9f; /* Text color */
+    -fx-border-color: darkgray; /* Border color */
+
+}
+
+.board-button:hover {
+    -fx-background-color: lightblue; /* Change background on hover */
+}
