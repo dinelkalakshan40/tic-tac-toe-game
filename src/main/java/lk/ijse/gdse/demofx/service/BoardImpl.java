@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx;
+package lk.ijse.gdse.demofx.service;
 
 public class BoardImpl implements Board {
     private Piece[][] pieces;
