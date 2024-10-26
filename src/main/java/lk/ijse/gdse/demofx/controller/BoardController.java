@@ -4,7 +4,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -13,6 +16,8 @@ import lk.ijse.gdse.demofx.service.AiPlayer;
 import lk.ijse.gdse.demofx.service.BoardImpl;
 import lk.ijse.gdse.demofx.service.HumanPlayer;
 import lk.ijse.gdse.demofx.service.Piece;
+
+import javax.swing.text.html.ImageView;
 
 public class BoardController {
 
@@ -78,6 +83,7 @@ public class BoardController {
                 Piece piece = board.getPiece(i, j);
                 if (piece == Piece.X) {
                     buttons[i][j].setText("X");
+                    buttons[i][j].setStyle("-fx-text-fill: green; -fx-font-size: 40px;");
                 } else if (piece == Piece.O) {
                     buttons[i][j].setText("O");
                 } else {
@@ -89,16 +95,30 @@ public class BoardController {
 
     private void checkWinner() {
         Piece winner = board.checkWinner();
+        String message = "";
+
         if (winner == Piece.X) {
-            System.out.println("Human wins!");
-            delayResetBoard();
+            message = "Congratulations! Human wins! You played well!";
         } else if (winner == Piece.O) {
-            System.out.println("AI wins!");
-            delayResetBoard();
+            message = "Oh no! AI wins! Better luck next time!";
         } else if (board.isFull()) {
-            System.out.println("Not winner!");
-            delayResetBoard();
+            message = "It's a draw! No winners this time, but you can try again!";
         }
+
+        if (!message.isEmpty()) {
+            showAlert(message);
+            delayResetBoard(); // Call to reset the board after displaying the message
+        }
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText("Winner");
+        alert.setContentText(message);
+        alert.getButtonTypes().setAll(ButtonType.OK);
+
+        alert.showAndWait();
     }
 
     private void delayResetBoard() {
