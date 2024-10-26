@@ -32,7 +32,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Text fx:id="lblPlayer" layoutX="347.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="57.13671875">
+      <Text fx:id="lblPlayer" fill="#457545" layoutX="351.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="156.13671875">
          <font>
             <Font size="25.0" />
          </font>

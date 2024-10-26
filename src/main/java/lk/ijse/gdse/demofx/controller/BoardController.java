@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.gdse.demofx.service.AiPlayer;
 import lk.ijse.gdse.demofx.service.BoardImpl;
@@ -26,8 +27,10 @@ public class BoardController {
     public Button button20;
     public Button button21;
     public Button button22;
+    public Text lblPlayer;
 
     private Button[][] buttons;
+
     private BoardImpl board;
     private AiPlayer aiPlayer;
     private HumanPlayer humanPlayer;
@@ -38,7 +41,7 @@ public class BoardController {
         aiPlayer = new AiPlayer(board);
         humanPlayer = new HumanPlayer(board);
 
-        // Initialize button grid array for easier access
+
         buttons = new Button[][]{
                 {button00, button01, button02},
                 {button10, button11, button12},
@@ -111,5 +114,8 @@ public class BoardController {
                 buttons[i][j].setText("");
             }
         }
+    }
+    public void setPlayerName(String name){
+        lblPlayer.setText(name);
     }
 }

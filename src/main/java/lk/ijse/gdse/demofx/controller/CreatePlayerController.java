@@ -28,6 +28,10 @@ public class CreatePlayerController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
             Pane newRoot = loader.load();
+            //given player name
+            BoardController controller =loader.getController();
+            controller.setPlayerName(name);
+
             Stage newStage = new Stage(StageStyle.DECORATED);
             newStage.setScene(new Scene(newRoot));
             newStage.show();
@@ -47,4 +51,5 @@ public class CreatePlayerController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }
