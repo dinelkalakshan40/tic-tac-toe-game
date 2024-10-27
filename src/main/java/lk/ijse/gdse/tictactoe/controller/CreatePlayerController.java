@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx.controller;
+package lk.ijse.gdse.tictactoe.controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;

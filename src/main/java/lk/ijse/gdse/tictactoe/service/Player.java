@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx.service;
+package lk.ijse.gdse.tictactoe.service;
 
 public abstract class Player {
     protected BoardImpl board;

@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx.util;
+package lk.ijse.gdse.tictactoe.util;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

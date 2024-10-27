@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx.service;
+package lk.ijse.gdse.tictactoe.service;
 
 import java.util.Scanner;
 

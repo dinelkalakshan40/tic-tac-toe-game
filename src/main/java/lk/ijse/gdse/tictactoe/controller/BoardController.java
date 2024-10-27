@@ -1,25 +1,17 @@
-package lk.ijse.gdse.demofx.controller;
+package lk.ijse.gdse.tictactoe.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import lk.ijse.gdse.demofx.service.AiPlayer;
-import lk.ijse.gdse.demofx.service.BoardImpl;
-import lk.ijse.gdse.demofx.service.HumanPlayer;
-import lk.ijse.gdse.demofx.service.Piece;
+import lk.ijse.gdse.tictactoe.service.*;
 
-import javax.swing.text.html.ImageView;
-
-public class BoardController {
+public class BoardController implements BoardUI {
 
     public GridPane grid;
 
@@ -76,8 +68,36 @@ public class BoardController {
             }
         }
     }
+    @Override
+    public void update(int col, int row, boolean isHuman) {
+        Button button = buttons[row][col];
+        if (isHuman) {
+            button.setText("X");
+            button.setStyle("-fx-text-fill: green; -fx-font-size: 40px;");
+        } else {
+            button.setText("O");
+            button.setStyle("-fx-text-fill: blue; -fx-font-size: 40px;");
+        }
+    }
 
     private void updateBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Piece piece = board.getPiece(i, j);
+                if (piece == Piece.X) {
+                    update(j, i, true); // Human piece
+                } else if (piece == Piece.O) {
+                    update(j, i, false); // AI piece
+                } else {
+                    // Clear button for empty cell
+                    buttons[i][j].setText("");
+                    buttons[i][j].setStyle("");
+                }
+            }
+        }
+    }
+
+    /*private void updateBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 Piece piece = board.getPiece(i, j);
@@ -91,6 +111,10 @@ public class BoardController {
                 }
             }
         }
+    }*/
+    @Override
+    public void NotifyWinner() {
+        checkWinner();
     }
 
     private void checkWinner() {
@@ -135,7 +159,9 @@ public class BoardController {
             }
         }
     }
+    //set PlayerName
     public void setPlayerName(String name){
         lblPlayer.setText(name);
     }
+
 }

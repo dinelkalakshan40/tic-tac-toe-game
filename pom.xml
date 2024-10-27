@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lk.ijse.gdse</groupId>
-    <artifactId>demofx</artifactId>
+    <artifactId>Tic-tac-toe-game</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>demofx</name>
+    <name>Tic-tac-toe-game</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -96,7 +96,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>lk.ijse.gdse.demofx/lk.ijse.gdse.demofx.HelloApplication</mainClass>
+                            <mainClass>lk.ijse.gdse.demofx/lk.ijse.gdse.tictactoe.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

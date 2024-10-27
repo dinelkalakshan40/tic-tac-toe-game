@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx.service;
+package lk.ijse.gdse.tictactoe.service;
 
 public class BoardImpl implements Board {
     private Piece[][] pieces;
@@ -39,7 +39,7 @@ public class BoardImpl implements Board {
     }
 
     @Override
-    public Piece checkWinner() {
+    public Piece checkWinner() { //findWinner
         // Check rows and columns
         for (int i = 0; i < 3; i++) {
             if (pieces[i][0] == pieces[i][1] && pieces[i][1] == pieces[i][2] && pieces[i][0] != Piece.EMPTY) {
@@ -74,11 +74,11 @@ public class BoardImpl implements Board {
         for (Piece[] row : pieces) {
             for (Piece piece : row) {
                 if (piece == Piece.EMPTY) {
-                    return false; // At least one empty cell exists
+                    return false;
                 }
             }
         }
-        return true; // No empty cells
+        return true;
     }
     public Piece getPiece(int row, int col) {
         return pieces[row][col];

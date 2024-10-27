@@ -1,4 +1,4 @@
-package lk.ijse.gdse.demofx.util;
+package lk.ijse.gdse.tictactoe.util;
 
 public class Launcher {
     public static void main(String[] args) {
