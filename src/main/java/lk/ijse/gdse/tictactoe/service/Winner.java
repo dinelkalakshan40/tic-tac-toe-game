@@ -78,22 +78,16 @@ public class Winner {
                 ", row3=" + row3 +
                 '}';
     }
-    public Winner(Piece winningPiece){
-        setWinningPiece(winningPiece);
-        this.col1 = -1;
-        this.row1 = -1;
-        this.col2 = -1;
-        this.row2 = -1;
-        this.col3 = -1;
-        this.row3 = -1;
-    }
-    public Winner(Piece winningPiece, int col1, int row1, int col2, int row2,int col3,int row3) {
+    public Winner(Piece winningPiece) {
         this.winningPiece = winningPiece;
-        this.setCol1(col1);
-        this.setRow2(row2);
-        this.setRow1(row1);
-        this.setCol2(col2);
-        this.setCol3(col3);
-        this.setRow3(row3);
+    }
+    public Winner(Piece winningPiece, int col1, int row1, int col2, int row2, int col3, int row3) {
+        this.winningPiece = winningPiece;
+        this.col1 = col1;
+        this.row1 = row1;
+        this.col2 = col2;
+        this.row2 = row2;
+        this.col3 = col3;
+        this.row3 = row3;
     }
 }

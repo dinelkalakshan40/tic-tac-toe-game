@@ -4,8 +4,8 @@ public interface Board {
     void initializeBoard();
     boolean isLegalMove(int row, int col);
     void updateMove(int row, int col, Piece piece);
-    Piece checkWinner();
-    void printBoard();
+    Winner checkWinner();
+
     boolean isFull();
     Piece getPiece(int row, int col);
 

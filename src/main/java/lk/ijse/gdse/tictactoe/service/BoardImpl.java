@@ -2,6 +2,7 @@ package lk.ijse.gdse.tictactoe.service;
 
 public class BoardImpl implements Board {
     private Piece[][] pieces;
+    private static final int SIZE = 3;
 
     public BoardImpl() {
         pieces = new Piece[3][3];
@@ -27,46 +28,32 @@ public class BoardImpl implements Board {
         pieces[row][col] = piece;
     }
 
-    public int[] findNextAvailableSpot() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (pieces[i][j] == Piece.EMPTY) {
-                    return new int[]{i, j}; // Return the first available spot
-                }
-            }
-        }
-        return null; // No available spot
-    }
 
     @Override
-    public Piece checkWinner() { //findWinner
-        // Check rows and columns
+    public Winner checkWinner() {
+        // Check rows
         for (int i = 0; i < 3; i++) {
             if (pieces[i][0] == pieces[i][1] && pieces[i][1] == pieces[i][2] && pieces[i][0] != Piece.EMPTY) {
-                return pieces[i][0]; // Return the winning piece
-            }
-            if (pieces[0][i] == pieces[1][i] && pieces[1][i] == pieces[2][i] && pieces[0][i] != Piece.EMPTY) {
-                return pieces[0][i]; // Return the winning piece
+                return new Winner(pieces[i][0], 0, i, 1, i, 2, i); // Return winning piece and coordinates
             }
         }
+
+        // Check columns
+        for (int i = 0; i < 3; i++) {
+            if (pieces[0][i] == pieces[1][i] && pieces[1][i] == pieces[2][i] && pieces[0][i] != Piece.EMPTY) {
+                return new Winner(pieces[0][i], i, 0, i, 1, i, 2); // Return winning piece and coordinates
+            }
+        }
+
         // Check diagonals
         if (pieces[0][0] == pieces[1][1] && pieces[1][1] == pieces[2][2] && pieces[0][0] != Piece.EMPTY) {
-            return pieces[0][0]; // Return the winning piece
+            return new Winner(pieces[0][0], 0, 0, 1, 1, 2, 2); // Return winning piece and coordinates
         }
         if (pieces[0][2] == pieces[1][1] && pieces[1][1] == pieces[2][0] && pieces[0][2] != Piece.EMPTY) {
-            return pieces[0][2]; // Return the winning piece
+            return new Winner(pieces[0][2], 2, 0, 1, 1, 0, 2); // Return winning piece and coordinates
         }
-        return Piece.EMPTY; // No winner
-    }
 
-    @Override
-    public void printBoard() {
-        for (Piece[] row : pieces) {
-            for (Piece piece : row) {
-                System.out.print(piece + " ");
-            }
-            System.out.println();
-        }
+        return new Winner(Piece.EMPTY); // No winner
     }
 
     @Override

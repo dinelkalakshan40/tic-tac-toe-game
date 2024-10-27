@@ -48,10 +48,11 @@ public class AiPlayer extends Player{
 
     private int minimax(int depth, boolean isMaximizing) {
         // Check for terminal states and evaluate the board
-        Piece winner = board.checkWinner();
-        if (winner == Piece.O) {
+        Winner winnerResult = board.checkWinner();
+        Piece winningPiece = winnerResult.getWinningPiece();
+        if (winningPiece == Piece.O) {
             return 1; // AI wins
-        } else if (winner == Piece.X) {
+        } else if (winningPiece == Piece.X) {
             return -1; // Human wins
         } else if (board.isFull()) {
             return 0; // Draw

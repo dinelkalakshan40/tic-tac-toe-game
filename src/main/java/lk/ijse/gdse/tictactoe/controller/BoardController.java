@@ -61,7 +61,7 @@ public class BoardController implements BoardUI {
             checkWinner();
 
             // AI move
-            if (!board.isFull() && board.checkWinner() == Piece.EMPTY) {
+            if (!board.isFull() && board.checkWinner().getWinningPiece() == Piece.EMPTY) {
                 aiPlayer.move();
                 updateBoard();
                 checkWinner();
@@ -97,28 +97,15 @@ public class BoardController implements BoardUI {
         }
     }
 
-    /*private void updateBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                Piece piece = board.getPiece(i, j);
-                if (piece == Piece.X) {
-                    buttons[i][j].setText("X");
-                    buttons[i][j].setStyle("-fx-text-fill: green; -fx-font-size: 40px;");
-                } else if (piece == Piece.O) {
-                    buttons[i][j].setText("O");
-                } else {
-                    buttons[i][j].setText("");
-                }
-            }
-        }
-    }*/
+
     @Override
     public void NotifyWinner() {
         checkWinner();
     }
 
     private void checkWinner() {
-        Piece winner = board.checkWinner();
+        Winner winnerResult = board.checkWinner(); // Get Winner object
+        Piece winner = winnerResult.getWinningPiece();
         String message = "";
 
         if (winner == Piece.X) {

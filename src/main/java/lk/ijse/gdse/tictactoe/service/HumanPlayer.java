@@ -25,5 +25,4 @@ public class HumanPlayer extends Player{
         board.updateMove(row, col, Piece.X);
     }
 
-
 }
