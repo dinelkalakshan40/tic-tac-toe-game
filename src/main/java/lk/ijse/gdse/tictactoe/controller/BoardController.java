@@ -54,6 +54,7 @@ public class BoardController implements BoardUI {
             }
         }
     }
+    //move players in board
     private void handlePlayerMove(int row, int col) {
         if (board.isLegalMove(row, col)) { //checks if chosen cell at (row, col) is a valid move
             humanPlayer.humanPlayerMove(row, col);
@@ -68,6 +69,7 @@ public class BoardController implements BoardUI {
             }
         }
     }
+    //set color and size to button
     @Override
     public void update(int col, int row, boolean isHuman) {
         Button button = buttons[row][col];
@@ -128,6 +130,7 @@ public class BoardController implements BoardUI {
         alert.showAndWait();
     }
 
+    //reset board to play
     private void delayResetBoard() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> resetBoard()));
         timeline.setCycleCount(1);

@@ -8,7 +8,7 @@ public class AiPlayer extends Player{
 
     public AiPlayer(BoardImpl board) {
         super(board);
-        random = new Random();
+        random = new Random();//generate random values for ai
     }
 
     @Override
@@ -59,6 +59,7 @@ public class AiPlayer extends Player{
             return 0; // Draw
         }
 
+        //simulates the AI’s move, aiming to maximize the AI’s score.
         if (isMaximizing) {
             int bestValue = Integer.MIN_VALUE;
 
@@ -75,7 +76,8 @@ public class AiPlayer extends Player{
                 }
             }
             return bestValue; // Return the best value found for the maximizing player
-        } else { // Minimizing player's turn
+
+        } else { //human player’s move, aiming to minimize the AI’s score
             int bestValue = Integer.MAX_VALUE;
 
             // Iterate through all cells to find the best move for the human
