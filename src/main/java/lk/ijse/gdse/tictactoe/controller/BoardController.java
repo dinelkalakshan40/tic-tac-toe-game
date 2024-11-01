@@ -26,7 +26,7 @@ public class BoardController implements BoardUI {
     public Button button22;
     public Text lblPlayer;
 
-    private Button[][] buttons;
+    private Button[][] buttons; //store buttons
 
     private BoardImpl board;
     private AiPlayer aiPlayer;
@@ -39,13 +39,13 @@ public class BoardController implements BoardUI {
         humanPlayer = new HumanPlayer(board);
 
 
-        buttons = new Button[][]{
+        buttons = new Button[][]{ //assign button to the array
                 {button00, button01, button02},
                 {button10, button11, button12},
                 {button20, button21, button22}
         };
 
-        // Set button actions
+        // Set button actions to handle move
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 final int row = i;
@@ -55,16 +55,16 @@ public class BoardController implements BoardUI {
         }
     }
     private void handlePlayerMove(int row, int col) {
-        if (board.isLegalMove(row, col)) {
-            humanPlayer.move(row, col);
+        if (board.isLegalMove(row, col)) { //checks if chosen cell at (row, col) is a valid move
+            humanPlayer.humanPlayerMove(row, col);
             buttons[row][col].setText("X"); // Human player's move
-            checkWinner();
+            checkFinalWinner();
 
             // AI move
-            if (!board.isFull() && board.checkWinner().getWinningPiece() == Piece.EMPTY) {
-                aiPlayer.move();
+            if (!board.isFull() && board.checkWinner().getWinningPiece() == Piece.EMPTY) { // checks if the board is not full and there is no current winner
+                aiPlayer.aiPlayerMove();
                 updateBoard();
-                checkWinner();
+                checkFinalWinner();
             }
         }
     }
@@ -79,6 +79,7 @@ public class BoardController implements BoardUI {
             button.setStyle("-fx-text-fill: blue; -fx-font-size: 40px;");
         }
     }
+
 
     private void updateBoard() {
         for (int i = 0; i < 3; i++) {
@@ -97,13 +98,8 @@ public class BoardController implements BoardUI {
         }
     }
 
-
     @Override
-    public void NotifyWinner() {
-        checkWinner();
-    }
-
-    private void checkWinner() {
+    public void checkFinalWinner() {
         Winner winnerResult = board.checkWinner(); // Get Winner object
         Piece winner = winnerResult.getWinningPiece();
         String message = "";
@@ -113,12 +109,12 @@ public class BoardController implements BoardUI {
         } else if (winner == Piece.O) {
             message = "Oh no! AI wins! Better luck next time!";
         } else if (board.isFull()) {
-            message = "It's a draw! No winners this time, but you can try again!";
+            message = "It's a draw! No winners t!";
         }
 
         if (!message.isEmpty()) {
             showAlert(message);
-            delayResetBoard(); // Call to reset the board after displaying the message
+            delayResetBoard(); // Call to reset the board
         }
     }
 

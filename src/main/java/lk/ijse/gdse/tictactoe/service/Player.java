@@ -7,5 +7,8 @@ public abstract class Player {
         this.board = board;
     }
 
-    public abstract void move();
+    public abstract void humanPlayerMove(int row, int col);
+
+    public abstract void aiPlayerMove();
+
 }

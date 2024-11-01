@@ -3,6 +3,7 @@ package lk.ijse.gdse.tictactoe.service;
 import java.util.Random;
 
 public class AiPlayer extends Player{
+
     private Random random;
 
     public AiPlayer(BoardImpl board) {
@@ -11,10 +12,10 @@ public class AiPlayer extends Player{
     }
 
     @Override
-    public void move() {
+    public void aiPlayerMove() {
         // Use the Minimax algorithm to find the best move
         int[] bestMove = findBestMove();
-        if (bestMove != null) {
+        if (bestMove != null) { //if not null
             board.updateMove(bestMove[0], bestMove[1], Piece.O);
         }
     }
@@ -43,7 +44,7 @@ public class AiPlayer extends Player{
                 }
             }
         }
-        return bestMove; // Return the best move found
+        return bestMove;
     }
 
     private int minimax(int depth, boolean isMaximizing) {
@@ -89,7 +90,11 @@ public class AiPlayer extends Player{
                     }
                 }
             }
-            return bestValue; // Return the best value found for the minimizing player
+            return bestValue;
         }
+    }
+    @Override
+    public void humanPlayerMove(int row, int col) {
+        board.updateMove(row, col, Piece.X);
     }
 }

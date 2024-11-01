@@ -2,10 +2,11 @@ package lk.ijse.gdse.tictactoe.service;
 
 public class BoardImpl implements Board {
     private Piece[][] pieces;
-    private static final int SIZE = 3;
 
-    public BoardImpl() {
-        pieces = new Piece[3][3];
+
+
+    public BoardImpl() { //constructor
+        pieces = new Piece[3][3]; //Creates a 3x3 grid
         initializeBoard();
     }
 
